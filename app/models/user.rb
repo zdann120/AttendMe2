@@ -30,4 +30,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: %i(attendee editor admin)
+  has_many :events
+  has_many :registrations
+  has_many :attendances, through: :registrations, foreign_key: 'user_id'
 end

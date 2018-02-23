@@ -2,3 +2,15 @@
 @import 'bootstrap';
 @import '_navbar';
 @import '_footer';
+
+.events-show {
+	dt {
+		@extend h4;
+		@extend .text-muted;
+	}
+
+	dd {
+		@extend p;
+		@extend .lead;
+	}
+}

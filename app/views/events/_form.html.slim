@@ -2,17 +2,30 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user, autofocus: true
-    = f.input :title
-    = f.input :starts_at
-    = f.input :ends_at
+    = f.input :title, autofocus: true
+    .row
+      .col-md-6
+        = f.input :location
+      .col-md-6
+        = f.input :contact_email
+    .row
+      .col-md-6
+        = f.input :starts_at, ampm: true, default: 1.day.from_now.midnight, label: 'Event Starts'
+      .col-md-6
+        = f.input :ends_at, ampm: true, default: 1.day.from_now.end_of_day, label: 'Event Ends'
+    .row
+      .col-md-6
+        = f.input :registration_starts_at, ampm: true, default: 1.day.from_now.midnight
+      .col-md-6
+        = f.input :registration_ends_at, ampm: true, default: 1.day.from_now.end_of_day
     = f.input :description
-    = f.input :location
-    = f.input :contact_email
-    = f.input :registration_starts_at
-    = f.input :registration_ends_at
-    = f.input :price_cents
-    = f.input :registration_requires_approval
+    
+    
+    .row
+      .col-md-6
+        = f.input :price
+      .col-md-6
+        = f.input :registration_requires_approval
 
   = button_tag type: 'submit', class: 'btn btn-primary' do
     = text_with_icon "#{btn_action_prefix} Event", action_icon_name

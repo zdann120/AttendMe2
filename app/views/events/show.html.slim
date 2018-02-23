@@ -1,29 +1,40 @@
 .page-header
-  h1 Event
-
-dl
-  dt User
-  dd= @event.user
-  dt Title
-  dd= @event.title
-  dt Starts at
-  dd= @event.starts_at
-  dt Ends at
-  dd= @event.ends_at
-  dt Description
-  dd= @event.description
-  dt Location
-  dd= @event.location
-  dt Contact email
-  dd= @event.contact_email
-  dt Registration starts at
-  dd= @event.registration_starts_at
-  dt Registration ends at
-  dd= @event.registration_ends_at
-  dt Price cents
-  dd= @event.price_cents
-  dt Registration requires approval
-  dd= @event.registration_requires_approval
+  h1 = @event.title
+  h2.lead = @event.description
+.row
+  .col-md-7
+    dl
+      dt Date(s)
+      dd
+        strong = @event.starts_at.to_s
+        = " until "
+        strong = @event.ends_at.to_s
+      dt Location
+      dd= @event.location
+      dt Contact email
+      dd= @event.contact_email
+      dt Price
+      dd= @event.price
+  .col-md-5
+    h4 Register
+    hr
+    - if @event.registration_allowed?
+      = render 'events/registration_form', event: @event, registration: @registration
+    - if @event.user_has_registrations?(current_user)
+      hr
+      h4 Your Registrations
+      table.table.table-sm.table-striped
+        thead
+          tr
+            th Name
+            th Email
+            th Approved
+        tbody
+          - @event.registrations.where(user: current_user).each do |reg|
+            tr
+              td = reg.first_name
+              td = reg.email
+              td = reg.approved
 
 /- if can?(:edit, @event)
 = link_to text_with_icon('Edit', 'edit'), edit_event_path(@event), class: 'btn btn-default'

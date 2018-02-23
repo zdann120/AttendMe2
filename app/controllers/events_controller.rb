@@ -1,25 +1,27 @@
 class EventsController < ApplicationController
-
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @events = Event.all
   end
 
   def show
+    @event.decorate
+    @registration = @event.registrations.new
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.new
   end
 
   def edit
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params.merge!({user_id: current_user.id}))
 
-    if @event.save
+    if @event.save!
       redirect_to @event, notice: "Event was successfully created."
     else
       render :new
@@ -48,6 +50,6 @@ class EventsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def event_params
-    params.require(:event).permit(:user_id, :title, :starts_at, :ends_at, :description, :location, :contact_email, :registration_starts_at, :registration_ends_at, :price_cents, :registration_requires_approval)
+    params.require(:event).permit(:user_id, :title, :starts_at, :ends_at, :description, :location, :contact_email, :registration_starts_at, :registration_ends_at, :price, :registration_requires_approval)
   end
 end

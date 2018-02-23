@@ -28,6 +28,6 @@ class Registration < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  validates :email, uniquess: { scope: :event_id }
+  validates :email, uniqueness: { scope: :event_id, message: 'already registered for this event' }
   validates :first_name, :last_name, :email, presence: true
 end

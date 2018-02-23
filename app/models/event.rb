@@ -29,7 +29,22 @@
 
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :registrations
+  has_many :registrants, through: :registrations, foreign_key: 'user_id'
+
+  monetize :price_cents
 
   validates :starts_at, :ends_at, :registration_starts_at, :title, presence: true
   validates :title, uniqueness: true
+
+  def registration_allowed?
+    registration_already_started = Time.zone.now > registration_starts_at
+    registration_has_not_ended = Time.zone.now < registration_ends_at
+
+    registration_already_started && registration_has_not_ended
+  end
+
+  def user_has_registrations?(user)
+    Registration.exists?(user: user, event: self)
+  end
 end

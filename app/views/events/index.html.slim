@@ -4,35 +4,21 @@ div.page-header
 table.table.table-striped.table-hover
   thead
     tr
-      th ID
-      th User
       th Title
       th Starts at
       th Ends at
-      th Description
-      th Location
       th Contact email
-      th Registration starts at
-      th Registration ends at
-      th Price cents
-      th Registration requires approval
+      th Approval Req'd
       th Actions
 
   tbody
     - @events.each do |event|
       tr
         /td= link_to_if can?(:show, event), event.id, event_path(event)
-        td= link_to event.id, event_path(event)
-        td= event.user
         td= event.title
         td= event.starts_at
         td= event.ends_at
-        td= event.description
-        td= event.location
         td= event.contact_email
-        td= event.registration_starts_at
-        td= event.registration_ends_at
-        td= event.price_cents
         td= event.registration_requires_approval
         td
           /- if can? :edit, event
