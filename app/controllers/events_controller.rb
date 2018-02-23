@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @events = Event.all
+    @events = Event.all.decorate
+    authorize @events
   end
 
   def show
@@ -13,6 +14,7 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.new
+    authorize @event
   end
 
   def edit
@@ -20,7 +22,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params.merge!({user_id: current_user.id}))
-
+    authorize @event
     if @event.save!
       redirect_to @event, notice: "Event was successfully created."
     else
@@ -46,6 +48,7 @@ class EventsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   # Only allow a trusted parameter "white list" through.
