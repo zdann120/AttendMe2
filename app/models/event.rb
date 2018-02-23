@@ -29,4 +29,7 @@
 
 class Event < ApplicationRecord
   belongs_to :user
+
+  validates :starts_at, :ends_at, :registration_starts_at, :title, presence: true
+  validates :title, uniqueness: true
 end
