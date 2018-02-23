@@ -29,5 +29,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: %i(attendee admin)
+  enum role: %i(attendee editor admin)
 end

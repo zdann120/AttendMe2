@@ -1,0 +1,20 @@
+= simple_form_for(event) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user, autofocus: true
+    = f.input :title
+    = f.input :starts_at
+    = f.input :ends_at
+    = f.input :description
+    = f.input :location
+    = f.input :contact_email
+    = f.input :registration_starts_at
+    = f.input :registration_ends_at
+    = f.input :price_cents
+    = f.input :registration_requires_approval
+
+  = button_tag type: 'submit', class: 'btn btn-primary' do
+    = text_with_icon "#{btn_action_prefix} Event", action_icon_name
+  '
+  = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'

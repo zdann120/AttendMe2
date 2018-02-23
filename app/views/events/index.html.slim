@@ -1,0 +1,46 @@
+div.page-header
+  h1 Listing events
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th ID
+      th User
+      th Title
+      th Starts at
+      th Ends at
+      th Description
+      th Location
+      th Contact email
+      th Registration starts at
+      th Registration ends at
+      th Price cents
+      th Registration requires approval
+      th Actions
+
+  tbody
+    - @events.each do |event|
+      tr
+        /td= link_to_if can?(:show, event), event.id, event_path(event)
+        td= link_to event.id, event_path(event)
+        td= event.user
+        td= event.title
+        td= event.starts_at
+        td= event.ends_at
+        td= event.description
+        td= event.location
+        td= event.contact_email
+        td= event.registration_starts_at
+        td= event.registration_ends_at
+        td= event.price_cents
+        td= event.registration_requires_approval
+        td
+          /- if can? :edit, event
+          = link_to text_with_icon('Edit', 'edit'), edit_event_path(event), class: 'btn btn-default btn-xs'
+          '
+          /- if can? :destroy, event
+          = link_to text_with_icon('Destroy', 'remove'), event_path(event),
+                    method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs btn-danger'
+
+/- if can? :create, Event
+= link_to text_with_icon('New Event', 'plus'), new_event_path, class: 'btn btn-primary'
