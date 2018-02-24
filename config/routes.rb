@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :self_service do
+    resources :cancellations, only: [:new, :create]
+  end
   resources :events do
     resources :registrations do
       get 'ticket', on: :member, to: 'registrations#ticket'

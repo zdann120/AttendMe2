@@ -67,3 +67,4 @@ gem "simple_calendar", "~> 2.2"
 gem "paper_trail", "~> 8.1"
 gem 'validates_timeliness', '~> 4.0'
 gem 'rails_db', "~> 1.6"
+gem "randexp"

@@ -30,12 +30,13 @@
 
       hr
       h4 Your Registrations
-      table.table.table-sm.table-striped
+      table.table.table-condensed.table-striped
         thead
           tr
             th Name
             th Email
             th Approved
+            th Code
             th Ticket
         tbody
           - @event.registrations.where(user: current_user).each do |reg|
@@ -43,6 +44,7 @@
               td = reg.first_name
               td = reg.email
               td = reg.is_approved?
+              td = reg.access_key
               td = link_to text_with_icon('View', 'ticket'), ticket_event_registration_path(@event, reg, format: :pdf)
 - if policy(@event).edit?
   /- if can?(:edit, @event)

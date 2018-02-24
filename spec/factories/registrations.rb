@@ -2,6 +2,7 @@
 #
 # Table name: registrations
 #
+#  access_key    :string
 #  approval_code :string
 #  approved      :boolean          default(FALSE), not null
 #  checked_in    :boolean          default(FALSE), not null
@@ -16,8 +17,9 @@
 #
 # Indexes
 #
-#  index_registrations_on_event_id  (event_id)
-#  index_registrations_on_user_id   (user_id)
+#  index_registrations_on_access_key  (access_key) UNIQUE
+#  index_registrations_on_event_id    (event_id)
+#  index_registrations_on_user_id     (user_id)
 #
 # Foreign Keys
 #

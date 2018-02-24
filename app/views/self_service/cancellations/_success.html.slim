@@ -1,0 +1,11 @@
+.panel.panel-success
+  table.table.table-condensed
+    tr
+      th Status
+      td = @result
+    tr
+      th Registered email
+      td = @cancellation.result.email
+    tr
+      th Event
+      td = @cancellation.result.event.title

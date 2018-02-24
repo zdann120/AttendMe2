@@ -1,0 +1,6 @@
+<% if @cancellation.valid? %>
+	$("#result").html('<%= render 'success' %>');
+	$('form').find('input[type="text"], input[type="email"]').val('');
+<% else %>
+	$("#result").html("Please try again.");
+<% end %>

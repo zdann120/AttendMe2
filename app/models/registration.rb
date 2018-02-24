@@ -2,6 +2,7 @@
 #
 # Table name: registrations
 #
+#  access_key    :string
 #  approval_code :string
 #  approved      :boolean          default(FALSE), not null
 #  checked_in    :boolean          default(FALSE), not null
@@ -16,8 +17,9 @@
 #
 # Indexes
 #
-#  index_registrations_on_event_id  (event_id)
-#  index_registrations_on_user_id   (user_id)
+#  index_registrations_on_access_key  (access_key) UNIQUE
+#  index_registrations_on_event_id    (event_id)
+#  index_registrations_on_user_id     (user_id)
 #
 # Foreign Keys
 #
@@ -32,11 +34,20 @@ class Registration < ApplicationRecord
   validates :email, uniqueness: { scope: :event_id, message: 'already registered for this event' }
   validates :first_name, :last_name, :email, presence: true
 
+  before_save :set_access_key
+
   has_paper_trail
 
   def is_approved?
     return true if !self.event.registration_requires_approval?
     approved?
+  end
+
+  def set_access_key
+    self.access_key = loop do
+      key = RandomGenerator.access_key.upcase
+      break key unless Registration.exists?(access_key: key)
+    end
   end
 
   def approve!
