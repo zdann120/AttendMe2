@@ -1,11 +1,9 @@
 class ProcessCancellation < ActiveInteraction::Base
-  string :key1
-  string :key2
+  string :cancellation_code
   string :email
 
   def execute
-    key = [key1.upcase, key2.upcase].join('-')
-    registration = Registration.find_by(access_key: key)
+    registration = Registration.find_by(access_key: cancellation_code.upcase)
     if registration
       return false unless registration.email == email
       registration.destroy

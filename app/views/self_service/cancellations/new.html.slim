@@ -6,9 +6,11 @@ p.lead If you would like to cancel your registration, please enter the access ke
       .panel-body
         = simple_form_for @cancellation, url: self_service_cancellations_path, remote: true do |f|
           .row
-            .col-md-12
+            .col-md-6
               = f.input :email
-          .row
+            .col-md-6
+              = f.input :cancellation_code, input_html: {class: 'code', placeholder: 'R____-____'}
+          / .row
             .col-md-6
               = f.input :key1, label: 'Code A'
             .col-md-6
@@ -18,3 +20,6 @@ p.lead If you would like to cancel your registration, please enter the access ke
               = f.submit "Cancel Registration", class: 'btn btn-danger'
   .col-md-6
     #result
+
+javascript:
+  $('.code').mask('R0000-S00S');

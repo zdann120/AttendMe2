@@ -42,10 +42,8 @@ prawn_document do |pdf|
     { text: ' and use the following cancellation codes:'}
   ]
   pdf.formatted_text [
-    { text: 'Code A: ', styles: [:bold] },
-    { text: @registration.access_keys[:key1], font: :Courier },
-    { text: ' Code B: ', styles: [:bold] },
-    { text: @registration.access_keys[:key2], font: :Courier }
+    { text: 'Cancellation Code: ', styles: [:bold] },
+    { text: @registration.access_key, font: :Courier },
   ]
 end
 
