@@ -37,6 +37,10 @@ class Event < ApplicationRecord
   validates :starts_at, :ends_at, :registration_starts_at, :title, presence: true
   validates :title, uniqueness: true
 
+  def self.upcoming
+    where('starts_at > ?', Time.zone.now)
+  end
+
   def registration_allowed?
     registration_already_started = Time.zone.now > registration_starts_at
     registration_has_not_ended = Time.zone.now < registration_ends_at

@@ -35,7 +35,7 @@
             tr
               td = reg.first_name
               td = reg.email
-              td = reg.approved
+              td = reg.is_approved?
               td = link_to text_with_icon('View', 'ticket'), ticket_event_registration_path(@event, reg, format: :pdf)
 - if policy(@event).edit?
   /- if can?(:edit, @event)
