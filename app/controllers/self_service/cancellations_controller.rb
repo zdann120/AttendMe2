@@ -7,6 +7,7 @@ class SelfService::CancellationsController < ApplicationController
     @cancellation = ProcessCancellation.run(cancellation_params)
     if @cancellation.valid?
       @result = "Cancellation succeeded."
+      RegistrationMailer.cancellation(@cancellation.result.email, @cancellation.result.event.id).deliver_now
     else
       @result = "Cancellation failed."
     end

@@ -29,4 +29,13 @@ class RegistrationMailer < ApplicationMailer
       from: 'approvals@zdnmail.com',
       subject: "Registration Approved for #{@event.title}"
   end
+
+  def cancellation(email, event_id)
+    @email = email
+    @event = Event.find(event_id).decorate
+
+    mail to: email,
+      from: 'cancellations@zdnmail.com',
+      subject: "Cancellation Processed for #{@event.title}"
+  end
 end
