@@ -50,6 +50,11 @@ class Registration < ApplicationRecord
     end
   end
 
+  def access_keys
+    keys = access_key.split('-')
+    {key1: keys[0], key2: keys[1]}
+  end
+
   def approve!
     return false if approved?
     code = loop do 

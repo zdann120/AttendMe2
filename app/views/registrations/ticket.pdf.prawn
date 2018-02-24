@@ -32,6 +32,21 @@ prawn_document do |pdf|
       pdf.text "* This registration does not require approval."
     end
   end
+  pdf.move_down 5
+  pdf.stroke_horizontal_rule
+  pdf.move_down 5
+  pdf.formatted_text [
+    { text: 'Need to cancel? ', styles: [:bold]},
+    { text: 'visit ' },
+    { text: cancel_url, styles: [:underline, :italic] },
+    { text: ' and use the following cancellation codes:'}
+  ]
+  pdf.formatted_text [
+    { text: 'Code A: ', styles: [:bold] },
+    { text: @registration.access_keys[:key1], font: :Courier },
+    { text: ' Code B: ', styles: [:bold] },
+    { text: @registration.access_keys[:key2], font: :Courier }
+  ]
 end
 
 
