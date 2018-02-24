@@ -6,6 +6,7 @@ class RegistrationsController < ApplicationController
     )
     if @registration.save
       redirect_to @event, notice: 'Registration successful. Please print your ticket.'
+      RegistrationMailer.new_registration(@registration.id).deliver_now
     else
       render 'events/show'
     end
