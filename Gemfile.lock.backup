@@ -357,49 +357,49 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_interaction (~> 3.6)
-  annotate (~> 2.7)
-  autoprefixer-rails (~> 7.2)
-  awesome_print (~> 1.8)
-  better_errors (~> 2.4)
-  binding_of_caller (~> 0.8)
-  bootsnap (~> 1.1)
-  bootstrap-sass (~> 3.3)
-  capybara (~> 2.17)
-  capybara-selenium (~> 0.0)
-  coffee-rails (~> 4.2)
-  devise (~> 4.4)
-  dotenv-rails (~> 2.2)
-  draper (~> 3.0)
-  factory_bot_rails (~> 4.8)
-  flutie (~> 2.0)
-  jquery-rails (~> 4.3)
-  launchy (~> 2.4)
-  letter_opener (~> 1.6)
-  listen (~> 3.1)
-  money-rails (~> 1.10)
-  paper_trail (~> 8.1)
-  pg (~> 1.0)
-  prawn-rails (~> 1.0)
-  prawn-table (~> 0.2)
-  puma (~> 3.11)
-  pundit (~> 1.1)
-  rack-canonical-host (~> 0.2)
-  rack-timeout (~> 0.4)
-  rails (= 5.2.0.rc1)
-  rails_db (~> 1.6)
-  rspec-rails (~> 3.7)
-  rspec_junit_formatter (~> 0.3)
-  rubocop (~> 0.52)
-  sass-rails (~> 5.0)
-  simple_calendar (~> 2.2)
-  simple_form (~> 3.5)
-  simplecov (~> 0.15)
-  slim-rails (~> 3.1)
-  spring (~> 2.0)
-  spring-commands-rspec (~> 1.0)
-  spring-watcher-listen (~> 2.0)
-  uglifier (~> 4.1)
+  active_interaction
+  annotate
+  autoprefixer-rails
+  awesome_print
+  better_errors
+  binding_of_caller
+  bootsnap
+  bootstrap-sass
+  capybara
+  capybara-selenium
+  coffee-rails
+  devise
+  dotenv-rails
+  draper
+  factory_bot_rails
+  flutie
+  jquery-rails
+  launchy
+  letter_opener
+  listen
+  money-rails
+  paper_trail
+  pg
+  prawn-rails
+  prawn-table
+  puma
+  pundit
+  rack-canonical-host
+  rack-timeout
+  rails (~> 5.2.0.rc1)
+  rails_db
+  rspec-rails
+  rspec_junit_formatter
+  rubocop
+  sass-rails
+  simple_calendar
+  simple_form
+  simplecov
+  slim-rails
+  spring
+  spring-commands-rspec
+  spring-watcher-listen
+  uglifier
   validates_timeliness (~> 4.0)
 
 RUBY VERSION
