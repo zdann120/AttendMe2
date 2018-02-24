@@ -71,8 +71,7 @@ Rails.application.configure do
     port:                 587,
     user_name:            Rails.application.credentials[:smtp_username],
     password:             Rails.application.credentials[:smtp_password],
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    authentication:       'plain' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
