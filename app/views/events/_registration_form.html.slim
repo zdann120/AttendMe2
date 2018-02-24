@@ -1,5 +1,11 @@
-= simple_form_for([event, registration]) do |f|
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :email
-  = f.submit "Register", class: 'btn btn-primary'
+- if user_signed_in?
+  = simple_form_for([event, registration]) do |f|
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email
+    = f.submit "Register", class: 'btn btn-primary'
+- else
+  p.lead 
+    ' Please
+    = link_to "sign in", new_user_session_path
+    |  before registering.

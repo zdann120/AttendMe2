@@ -12,14 +12,17 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
+    return false unless user
     user.admin? || user.editor?
   end
 
   def destroy?
+    return false unless user
     user.admin? || user.editor?
   end
 
   def has_privileges?
+    return false unless user
     (user == record.user) || user.admin? || user.editor?
   end
 
