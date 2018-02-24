@@ -5,10 +5,15 @@ class RegistrationsController < ApplicationController
       registration_params.merge!(user_id: current_user.id, event_id: @event.id)
     )
     if @registration.save
-      redirect_to @event, notice: 'Registration successful.'
+      redirect_to @event, notice: 'Registration successful. Please print your ticket.'
     else
       render 'events/show'
     end
+  end
+
+  def ticket
+    @registration = Registration.find(params[:id])
+    @event = @registration.event.decorate
   end
 
   private

@@ -29,12 +29,14 @@
             th Name
             th Email
             th Approved
+            th Ticket
         tbody
           - @event.registrations.where(user: current_user).each do |reg|
             tr
               td = reg.first_name
               td = reg.email
               td = reg.approved
+              td = link_to text_with_icon('View', 'ticket'), ticket_event_registration_path(@event, reg, format: :pdf)
 - if policy(@event).edit?
   /- if can?(:edit, @event)
   = link_to text_with_icon('Edit', 'edit'), edit_event_path(@event), class: 'btn btn-default'

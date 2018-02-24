@@ -8,8 +8,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event.decorate
     @registration = @event.registrations.new
+    @event = @event.decorate
   end
 
   def new
