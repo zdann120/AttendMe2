@@ -11,7 +11,13 @@ javascript:
 .panel.panel-default
   .panel-heading
     h4.panel-title Upcoming Events
-  .ul.list-group
+  .panel-calendar 
+    = week_calendar events: Event.all, attribute: :starts_at, number_of_weeks: 2 do |date, events|
+      b = date.strftime('%b %e')
+      ul
+        - events.each do |event|
+          li = link_to event.title, event
+  /.ul.list-group
     - Event.upcoming.decorate.each do |event|
       li.list-group-item 
         = link_to event.title, event

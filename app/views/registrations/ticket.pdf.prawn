@@ -23,9 +23,9 @@ prawn_document do |pdf|
     if @event.registration_requires_approval?
       if @registration.approved?
         pdf.text "* This registration has been APPROVED."
-        pdf.text ">> Approval Code: #{@registration.approval_code}"
+        pdf.text ">> Approval Code: #{@registration.approval_code} <<"
       else
-        pdf.text "* This registration has NOT been approved."
+        pdf.text "* This registration is <u>PENDING APPROVAL</u>.", inline_format: true
         pdf.text ">> Once approved, write approval code here: _________________"
       end
     else

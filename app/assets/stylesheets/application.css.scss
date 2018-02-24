@@ -14,3 +14,19 @@
 		@extend .lead;
 	}
 }
+
+.pages-root {
+	.calendar-heading {
+		text-align: center;
+	}
+	.calendar-title {
+		@extend h4;
+	}
+	.calendar-heading {
+		a {
+			@extend .btn;
+			@extend .btn-default;
+			@extend .btn-sm;
+		}
+	}
+}
