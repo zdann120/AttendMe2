@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
     @registration = @event.registrations.new(
       registration_params.merge!(user_id: current_user.id)
     )
+    set_email unless current_user.multiple_registrations?
     authorize @registration
     if @registration.save
       redirect_to @event, notice: 'Registration successful. Please print your ticket.'
@@ -44,5 +45,9 @@ class RegistrationsController < ApplicationController
 
   def set_event
     @event = Event.find params[:event_id]
+  end
+
+  def set_email
+    @registration.email = current_user.email
   end
 end

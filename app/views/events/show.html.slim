@@ -19,8 +19,15 @@
     h4 Register
     hr
     - if @event.registration_allowed?
-      = render 'events/registration_form', event: @event, registration: @registration
+      - if @event.user_has_registrations?(current_user)
+        - if current_user.multiple_registrations?
+          = render 'events/registration_form', event: @event, registration: @registration
+        - else
+          p You already registered.
+      - else
+        = render 'events/registration_form', event: @event, registration: @registration
     - if @event.user_has_registrations?(current_user)
+
       hr
       h4 Your Registrations
       table.table.table-sm.table-striped

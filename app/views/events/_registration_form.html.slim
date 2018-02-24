@@ -2,7 +2,8 @@
   = simple_form_for([event, registration]) do |f|
     = f.input :first_name
     = f.input :last_name
-    = f.input :email
+    - if current_user.multiple_registrations
+      = f.input :email
     = f.submit "Register", class: 'btn btn-primary'
 - else
   p.lead 

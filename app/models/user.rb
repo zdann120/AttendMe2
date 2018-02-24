@@ -10,6 +10,7 @@
 #  id                     :uuid             not null, primary key
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
+#  multiple_registrations :boolean          default(FALSE), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
