@@ -49,6 +49,7 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen"
+  gem "letter_opener"
   # gem "guard"
   # gem "guard-rspec", ">= 4.6.5" # Resolves to 1.x without a version constraint. :/
   # gem "guard-livereload"

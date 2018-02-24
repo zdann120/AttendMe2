@@ -1,0 +1,19 @@
+h1 Registration Confirmation:
+p Hello #{@registration.first_name} #{@registration.last_name},
+p You have been registered for the follow event:
+table
+  thead
+    tr
+      th Event Name
+      th Starts
+      th Ends
+  tbody
+    tr
+      td = @event.title
+      td = @event.starts_at
+      td = @event.ends_at
+p This registration was submitted by #{@registration.user.email} (#{@registration.user.id})
+hr
+h2 IMPORTANT!
+p Please print your admission ticket at the link below:
+p = link_to "CLICK HERE TO PRINT", ticket_event_registration_url(@event, @registration, format: :pdf)
