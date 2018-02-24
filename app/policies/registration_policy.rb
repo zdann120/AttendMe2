@@ -1,5 +1,6 @@
 class RegistrationPolicy < ApplicationPolicy
   def index?
+    return false unless user
     user.admin? || user.editor?
   end
 
