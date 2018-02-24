@@ -1,2 +1,27 @@
-h1 Registration#registration_approved
-p = @greeting + ", find me in app/views/registration_mailer/registration_approved.html.slim"
+h1 Registration Approval:
+p Hello #{@registration.first_name} #{@registration.last_name},
+p Your registration for the following event is <b>APPROVED</b>:
+hr
+table
+  thead
+    tr
+      th Event Name
+      th Starts
+      th Ends
+  tbody
+    tr
+      td = @event.title
+      td = @event.starts_at
+      td = @event.ends_at
+hr
+p This registration was submitted by #{@registration.user.email} (#{@registration.user.id})
+hr
+h2 IMPORTANT!
+p 
+  |<b>Please print your admission ticket at the link below:</b><br>
+  = link_to "CLICK HERE TO PRINT", ticket_event_registration_url(@event, @registration, format: :pdf)
+p 
+  | ** IF YOUR PRINTED YOUR ADMISSION TICKET PRIOR TO APPROVAL, <br>PLEASE WRITE THE APPROVAL CODE WHERE INDICATED ON TICKET.
+p 
+  | <strong>APPROVAL CODE:</strong> <br><font size="5">#{@registration.approval_code}</font>
+hr

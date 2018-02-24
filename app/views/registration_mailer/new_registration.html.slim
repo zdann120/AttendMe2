@@ -1,6 +1,7 @@
 h1 Registration Confirmation:
 p Hello #{@registration.first_name} #{@registration.last_name},
-p You have been registered for the follow event:
+p You have been registered for the following event:
+hr
 table
   thead
     tr
@@ -12,8 +13,12 @@ table
       td = @event.title
       td = @event.starts_at
       td = @event.ends_at
+hr
 p This registration was submitted by #{@registration.user.email} (#{@registration.user.id})
 hr
 h2 IMPORTANT!
+- if !@registration.is_approved?
+  p
+    font[color="red"] <b>THIS TICKET IS PENDING APPROVAL.</b> You will receive another email once it is approved.
 p Please print your admission ticket at the link below:
 p = link_to "CLICK HERE TO PRINT", ticket_event_registration_url(@event, @registration, format: :pdf)
