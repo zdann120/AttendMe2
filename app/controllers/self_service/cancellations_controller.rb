@@ -16,6 +16,6 @@ class SelfService::CancellationsController < ApplicationController
   private
 
   def cancellation_params
-    params.require(:process_cancellation).permit(:key1, :key2, :email)
+    params.require(:process_cancellation).permit(:cancellation_code, :email)
   end
 end
