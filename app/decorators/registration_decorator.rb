@@ -9,5 +9,8 @@ class RegistrationDecorator < ApplicationDecorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
+  def approved?
+    object.is_approved? ? h.text_with_icon(object.approval_code, 'check') : "Pending"
+  end
 
 end

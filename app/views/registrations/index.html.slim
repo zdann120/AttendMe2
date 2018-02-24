@@ -5,7 +5,7 @@ table.table.table-condensed.table-bordered.table-hover.table-striped
       th Last Name
       th First Name
       th Email
-      th Approved
+      th Approval
       th Actions
   tbody
     - @registrations.each do |reg|
@@ -13,7 +13,10 @@ table.table.table-condensed.table-bordered.table-hover.table-striped
         td = reg.last_name
         td = reg.first_name
         td = reg.email
-        td = reg.approved
+        td = reg.approved?
         td
-          - if @event.registration_requires_approval? && !reg.is_approved?
-            = link_to 'Approve', approve_event_registration_path(@event, reg), method: :patch
+          .btn-group
+            - if @event.registration_requires_approval? && !reg.is_approved?
+              = link_to 'Approve', approve_event_registration_path(@event, reg), method: :patch,
+                class: 'btn btn-success btn-sm'
+            = link_to 'View Ticket', ticket_event_registration_path(@event, reg, format: :pdf), class: 'btn btn-default btn-sm'

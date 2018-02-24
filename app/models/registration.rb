@@ -40,7 +40,7 @@ class Registration < ApplicationRecord
   def approve!
     return false if approved?
     code = loop do 
-      token = Devise.friendly_token.first(8).upcase
+      token = Devise.friendly_token.first(8).upcase.gsub(/\W/, '')
       break token unless Registration.exists?(approval_code: token)
     end
     self.update(

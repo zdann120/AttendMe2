@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   before_action :set_event
 
   def index
-    @registrations = @event.registrations
+    @registrations = @event.registrations.decorate
   end
 
   def create
