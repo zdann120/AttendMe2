@@ -3,18 +3,18 @@ p Hello #{@registration.first_name} #{@registration.last_name},
 p Your registration for the following event is <b>APPROVED</b>:
 hr
 table
-  thead
-    tr
-      th Event Name
-      th Starts
-      th Ends
   tbody
     tr
+      th Title
       td = @event.title
+    tr
+      th Start date
       td = @event.starts_at
+    tr
+      th End date
       td = @event.ends_at
 hr
-p This registration was submitted by #{@registration.user.email} (#{@registration.user.id})
+p <em>This registration was submitted by #{@registration.user.email} (#{@registration.user.id})</em>
 hr
 h2 IMPORTANT!
 p 

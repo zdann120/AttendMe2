@@ -7,7 +7,7 @@ class RegistrationMailer < ApplicationMailer
   #
   def new_registration(registration_id)
     @registration = Registration.find(registration_id)
-    @event = @registration.event
+    @event = @registration.event.decorate
     @registration = @registration.decorate
 
     mail to: @registration.email,
@@ -22,7 +22,7 @@ class RegistrationMailer < ApplicationMailer
   #
   def registration_approved(registration_id)
     @registration = Registration.find(registration_id)
-    @event = @registration.event
+    @event = @registration.event.decorate
     @registration = @registration.decorate
 
     mail to: @registration.email,

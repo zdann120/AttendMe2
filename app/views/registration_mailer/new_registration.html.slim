@@ -3,15 +3,15 @@ p Hello #{@registration.first_name} #{@registration.last_name},
 p You have been registered for the following event:
 hr
 table
-  thead
-    tr
-      th Event Name
-      th Starts
-      th Ends
   tbody
     tr
+      th Title
       td = @event.title
+    tr
+      th Start date
       td = @event.starts_at
+    tr
+      th End date
       td = @event.ends_at
 hr
 p This registration was submitted by #{@registration.user.email} (#{@registration.user.id})
