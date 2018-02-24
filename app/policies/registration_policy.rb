@@ -4,7 +4,7 @@ class RegistrationPolicy < ApplicationPolicy
   end
 
   def create?
-    !(record.event..user == user)
+    !(record.event..user == user) || user.admin?
   end
 
   def approve?
