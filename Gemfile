@@ -64,3 +64,5 @@ gem "draper"
 gem "prawn-rails"
 gem "prawn-table"
 gem "simple_calendar"
+gem "paper_trail"
+gem 'validates_timeliness', '~> 4.0'

@@ -36,6 +36,13 @@ class Event < ApplicationRecord
 
   validates :starts_at, :ends_at, :registration_starts_at, :title, presence: true
   validates :title, uniqueness: true
+  
+  validates_datetime :starts_at, before: :ends_at
+  validates_datetime :ends_at, after: :starts_at
+  validates_datetime :registration_starts_at, on_or_after: :starts_at
+  validates_datetime :registration_ends_at, on_or_before: :ends_at
+
+  has_paper_trail
 
   def self.upcoming
     where('starts_at > ?', Time.zone.now)

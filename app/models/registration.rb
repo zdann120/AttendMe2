@@ -32,6 +32,8 @@ class Registration < ApplicationRecord
   validates :email, uniqueness: { scope: :event_id, message: 'already registered for this event' }
   validates :first_name, :last_name, :email, presence: true
 
+  has_paper_trail
+
   def is_approved?
     return true if !self.event.registration_requires_approval?
     approved?
